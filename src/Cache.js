@@ -774,8 +774,7 @@ export default class Cache {
         if (shouldStore) {
           this.$$promises[key] = undefined
           if (utils.isObject(v) && 'status' in v && 'data' in v) {
-            v = [v.status, v.data, v.headers(), v.statusText]
-            this.put(key, v)
+            this.put(key, [v.status, v.data, v.headers(), v.statusText])
           } else {
             this.put(key, v)
           }
